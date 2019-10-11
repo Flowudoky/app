@@ -14,6 +14,7 @@ struct ContentView: View {
  
     var body: some View {
         TabView(selection: $selection){
+            Color.black
             BarCharts().tabItem { Group{
                               Image(systemName: "chart.bar")
                               Text("Bar charts")
@@ -34,7 +35,9 @@ struct BarCharts:View {
     var body: some View {
     
         VStack{
-            BarChartView(data: [8,23,54,32,12,37,7,23,43], title: "Title", style: Styles.barChartStyleOrangeLight)
+            BarChartView(data: [8,23,54,32,12,37,7,23,43], title: "Leaderboard", style: Styles.barChartStyleOrangeLight)
+            LineChartView(data: [8,23,54,32,12,37,7,23,43], title: "Your last 7 days", legend: "Legendary")
+            
         }
     }
 }
