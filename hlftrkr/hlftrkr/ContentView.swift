@@ -7,21 +7,17 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct ContentView: View {
     @State private var selection = 0
  
     var body: some View {
         TabView(selection: $selection){
-            Text("First View")
-                .font(.title)
-                .tabItem {
-                    VStack {
-                        Image("first")
-                        Text("First")
-                    }
-                }
-                .tag(0)
+            BarCharts().tabItem { Group{
+                              Image(systemName: "chart.bar")
+                              Text("Bar charts")
+                          }}.tag(0)
             Text("Second View")
                 .font(.title)
                 .tabItem {
@@ -34,7 +30,14 @@ struct ContentView: View {
         }
     }
 }
-
+struct BarCharts:View {
+    var body: some View {
+    
+        VStack{
+            BarChartView(data: [8,23,54,32,12,37,7,23,43], title: "Title", style: Styles.barChartStyleOrangeLight)
+        }
+    }
+}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
